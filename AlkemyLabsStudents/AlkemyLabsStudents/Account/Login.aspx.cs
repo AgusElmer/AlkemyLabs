@@ -18,5 +18,10 @@ namespace AlkemyLabs.Account
         {
             Response.Redirect("SignIn.aspx");
         }
+
+        protected void btnEnter_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Restricted/Home.aspx");
+        }
     }
 }

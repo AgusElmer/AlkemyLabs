@@ -35,7 +35,7 @@
                 <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"/>
                 Remember me
             </label>
-            <asp:Button ID="btnEnter" runat="server" Text="Enter"  class="btn btn-lg btn-primary btn-block"/>
+            <asp:Button ID="btnEnter" runat="server" Text="Enter"  class="btn btn-lg btn-primary btn-block" OnClick="btnEnter_Click"/>
             
                 
         </form>

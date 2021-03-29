@@ -26,8 +26,8 @@
             <label class="checkbox">
         <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"/> Remember me
       </label><br />
-            <asp:Button  class="btn btn-lg btn-primary btn-block"  ID="btnEnter" runat="server" Text="Enter" />
-            <asp:Button ID="btSignIn" runat="server" Text="Sign in" OnClick="btSignIn_Click" />
+            <asp:Button  class="btn btn-lg btn-primary btn-block"  ID="btnEnter" runat="server" Text="Enter" OnClick="btnEnter_Click" />
+            <asp:Button ID="btSignIn" runat="server" Text="Sign in" OnClick="btSignIn_Click"/>
 
         </div>
     </form>
