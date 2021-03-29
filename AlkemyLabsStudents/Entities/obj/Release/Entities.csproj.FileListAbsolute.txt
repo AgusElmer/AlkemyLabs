@@ -1,0 +1,4 @@
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Entities\bin\Release\Entities.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Entities\bin\Release\Entities.pdb
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Entities\obj\Release\Entities.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Entities\obj\Release\Entities.pdb

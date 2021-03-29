@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="alkemylabsModelStoreContainer" CdmEntityContainer="alkemylabsEntities">
+    <EntitySetMapping Name="access">
+      <EntityTypeMapping TypeName="alkemylabsModel.access">
+        <MappingFragment StoreEntitySet="access">
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="menu" ColumnName="menu" />
+          <ScalarProperty Name="enabled" ColumnName="enabled" />
+          <ScalarProperty Name="access_id" ColumnName="access_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admin_account">
+      <EntityTypeMapping TypeName="alkemylabsModel.admin_account">
+        <MappingFragment StoreEntitySet="admin_account">
+          <ScalarProperty Name="user_account" ColumnName="user_account" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="classes">
+      <EntityTypeMapping TypeName="alkemylabsModel.classes">
+        <MappingFragment StoreEntitySet="classes">
+          <ScalarProperty Name="class_code" ColumnName="class_code" />
+          <ScalarProperty Name="class_professor_dni" ColumnName="class_professor_dni" />
+          <ScalarProperty Name="class_quota" ColumnName="class_quota" />
+          <ScalarProperty Name="class_schedule" ColumnName="class_schedule" />
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="classes_registry">
+      <EntityTypeMapping TypeName="alkemylabsModel.classes_registry">
+        <MappingFragment StoreEntitySet="classes_registry">
+          <ScalarProperty Name="file_number" ColumnName="file_number" />
+          <ScalarProperty Name="class_code" ColumnName="class_code" />
+          <ScalarProperty Name="registry_ID" ColumnName="registry_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="professors_table">
+      <EntityTypeMapping TypeName="alkemylabsModel.professors_table">
+        <MappingFragment StoreEntitySet="professors_table">
+          <ScalarProperty Name="professor_ID" ColumnName="professor_ID" />
+          <ScalarProperty Name="professor_name" ColumnName="professor_name" />
+          <ScalarProperty Name="professor_last_name" ColumnName="professor_last_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="alkemylabsModel.students">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="file_number" ColumnName="file_number" />
+          <ScalarProperty Name="student_ID" ColumnName="student_ID" />
+          <ScalarProperty Name="student_name" ColumnName="student_name" />
+          <ScalarProperty Name="student_last_name" ColumnName="student_last_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="delete_class" FunctionName="alkemylabsModel.Store.delete_class" />
+    <FunctionImportMapping FunctionImportName="delete_professor" FunctionName="alkemylabsModel.Store.delete_professor" />
+    <FunctionImportMapping FunctionImportName="delete_student" FunctionName="alkemylabsModel.Store.delete_student" />
+    <FunctionImportMapping FunctionImportName="insert_class" FunctionName="alkemylabsModel.Store.insert_class" />
+    <FunctionImportMapping FunctionImportName="insert_professor" FunctionName="alkemylabsModel.Store.insert_professor" />
+    <FunctionImportMapping FunctionImportName="insert_student" FunctionName="alkemylabsModel.Store.insert_student" />
+  </EntityContainerMapping>
+</Mapping>

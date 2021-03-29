@@ -1,0 +1,9 @@
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\DAL\bin\Debug\DAL.dll.config
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\DAL\bin\Debug\DAL.dll
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\DAL\bin\Debug\DAL.pdb
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\DAL\bin\Debug\EntityFramework.dll
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\DAL\bin\Debug\EntityFramework.xml
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\DAL\obj\Debug\DAL.dll
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\DAL\obj\Debug\DAL.pdb

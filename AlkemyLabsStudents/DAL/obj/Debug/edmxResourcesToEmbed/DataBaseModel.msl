@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="alkemylabsModelStoreContainer" CdmEntityContainer="alkemylabsEntities">
+    <EntitySetMapping Name="classes">
+      <EntityTypeMapping TypeName="alkemylabsModel.classes">
+        <MappingFragment StoreEntitySet="classes">
+          <ScalarProperty Name="class_code" ColumnName="class_code" />
+          <ScalarProperty Name="class_professor_dni" ColumnName="class_professor_dni" />
+          <ScalarProperty Name="class_quota" ColumnName="class_quota" />
+          <ScalarProperty Name="class_schedule" ColumnName="class_schedule" />
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="professors_table">
+      <EntityTypeMapping TypeName="alkemylabsModel.professors_table">
+        <MappingFragment StoreEntitySet="professors_table">
+          <ScalarProperty Name="professor_ID" ColumnName="professor_ID" />
+          <ScalarProperty Name="professor_name" ColumnName="professor_name" />
+          <ScalarProperty Name="professor_last_name" ColumnName="professor_last_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="alkemylabsModel.students">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="file_number" ColumnName="file_number" />
+          <ScalarProperty Name="student_ID" ColumnName="student_ID" />
+          <ScalarProperty Name="student_name" ColumnName="student_name" />
+          <ScalarProperty Name="student_last_name" ColumnName="student_last_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="file_number" TypeName="alkemylabsModel.file_number" StoreEntitySet="file_number">
+      <EndProperty Name="classes">
+        <ScalarProperty Name="class_code" ColumnName="class_code" />
+      </EndProperty>
+      <EndProperty Name="students">
+        <ScalarProperty Name="file_number" ColumnName="file_number" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="delete_class" FunctionName="alkemylabsModel.Store.delete_class" />
+    <FunctionImportMapping FunctionImportName="delete_professor" FunctionName="alkemylabsModel.Store.delete_professor" />
+    <FunctionImportMapping FunctionImportName="delete_student" FunctionName="alkemylabsModel.Store.delete_student" />
+    <FunctionImportMapping FunctionImportName="insert_student" FunctionName="alkemylabsModel.Store.insert_student" />
+  </EntityContainerMapping>
+</Mapping>

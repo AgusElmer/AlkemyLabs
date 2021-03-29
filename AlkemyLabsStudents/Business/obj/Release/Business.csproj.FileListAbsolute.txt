@@ -1,0 +1,16 @@
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\Business.dll.config
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\Business.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\Business.pdb
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\AlkemyDAL.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\Entities.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\EntityFramework.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\AlkemyDAL.pdb
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\Entities.pdb
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\EntityFramework.xml
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\es\EntityFramework.resources.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\bin\Release\es\EntityFramework.SqlServer.resources.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\obj\Release\Business.csprojResolveAssemblyReference.cache
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\obj\Release\Business.dll
+C:\Users\el_ag\onedrive\documentos\visual studio 2015\Projects\AlkemyLabsStudents\Business\obj\Release\Business.pdb

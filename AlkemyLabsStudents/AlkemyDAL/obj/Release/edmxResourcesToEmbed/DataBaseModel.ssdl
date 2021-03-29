@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="alkemylabsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="classes">
+    <Key>
+      <PropertyRef Name="class_code" />
+    </Key>
+    <Property Name="class_code" Type="int" Nullable="false" />
+    <Property Name="class_professor_dni" Type="int" Nullable="false" />
+    <Property Name="class_quota" Type="int" />
+    <Property Name="class_schedule" Type="datetime" Nullable="false" />
+    <Property Name="class_name" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="file_number">
+    <Key>
+      <PropertyRef Name="file_number" />
+    </Key>
+    <Property Name="file_number" Type="int" Nullable="false" />
+    <Property Name="class_code" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="professors_table">
+    <Key>
+      <PropertyRef Name="professor_ID" />
+    </Key>
+    <Property Name="professor_ID" Type="int" Nullable="false" />
+    <Property Name="professor_name" Type="nchar" MaxLength="10" />
+    <Property Name="professor_last_name" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="file_number" />
+    </Key>
+    <Property Name="file_number" Type="int" Nullable="false" />
+    <Property Name="student_ID" Type="int" />
+    <Property Name="student_name" Type="nchar" MaxLength="10" />
+    <Property Name="student_last_name" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="classes_professors">
+    <End Role="professors_table" Type="Self.professors_table" Multiplicity="1" />
+    <End Role="classes" Type="Self.classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="professors_table">
+        <PropertyRef Name="professor_ID" />
+      </Principal>
+      <Dependent Role="classes">
+        <PropertyRef Name="class_professor_dni" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_file_number_classes">
+    <End Role="classes" Type="Self.classes" Multiplicity="1" />
+    <End Role="file_number" Type="Self.file_number" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="classes">
+        <PropertyRef Name="class_code" />
+      </Principal>
+      <Dependent Role="file_number">
+        <PropertyRef Name="class_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_file_student">
+    <End Role="students" Type="Self.students" Multiplicity="1" />
+    <End Role="file_number" Type="Self.file_number" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="file_number" />
+      </Principal>
+      <Dependent Role="file_number">
+        <PropertyRef Name="file_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="delete_class" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pclass_code" Type="int" Mode="In" />
+    <Parameter Name="class_name" Type="varchar" Mode="In" />
+    <Parameter Name="pclass_quota" Type="int" Mode="In" />
+    <Parameter Name="pfull_quota" Type="int" Mode="In" />
+    <Parameter Name="pclass_schedule" Type="int" Mode="In" />
+    <Parameter Name="pclass_professor_dni" Type="int" Mode="In" />
+    <Parameter Name="RetVal" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delete_professor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pprofessor_name" Type="varchar" Mode="In" />
+    <Parameter Name="pprofessor_lastName" Type="varchar" Mode="In" />
+    <Parameter Name="pprofessor_ID" Type="int" Mode="In" />
+    <Parameter Name="RetVal" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delete_student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pfile_number" Type="int" Mode="In" />
+    <Parameter Name="pstudent_ID" Type="int" Mode="In" />
+    <Parameter Name="pstudent_name" Type="varchar" Mode="In" />
+    <Parameter Name="pstudent_lastName" Type="varchar" Mode="In" />
+    <Parameter Name="RetVal" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insert_student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pfile_number" Type="int" Mode="In" />
+    <Parameter Name="pstudent_ID" Type="int" Mode="In" />
+    <Parameter Name="pstudent_name" Type="varchar" Mode="In" />
+    <Parameter Name="pstudent_last_name" Type="varchar" Mode="In" />
+    <Parameter Name="Retval" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="alkemylabsModelStoreContainer">
+    <EntitySet Name="classes" EntityType="Self.classes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="file_number" EntityType="Self.file_number" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="professors_table" EntityType="Self.professors_table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="classes_professors" Association="Self.classes_professors">
+      <End Role="professors_table" EntitySet="professors_table" />
+      <End Role="classes" EntitySet="classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_file_number_classes" Association="Self.FK_file_number_classes">
+      <End Role="classes" EntitySet="classes" />
+      <End Role="file_number" EntitySet="file_number" />
+    </AssociationSet>
+    <AssociationSet Name="FK_file_student" Association="Self.FK_file_student">
+      <End Role="students" EntitySet="students" />
+      <End Role="file_number" EntitySet="file_number" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

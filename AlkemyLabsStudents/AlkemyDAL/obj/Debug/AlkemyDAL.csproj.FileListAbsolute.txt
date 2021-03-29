@@ -1,0 +1,11 @@
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\bin\Debug\AlkemyDAL.dll.config
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\bin\Debug\AlkemyDAL.dll
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\bin\Debug\AlkemyDAL.pdb
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\bin\Debug\EntityFramework.dll
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\bin\Debug\EntityFramework.xml
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\obj\Debug\AlkemyDAL.csproj.CoreCompileInputs.cache
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\obj\Debug\AlkemyDAL.csproj.CopyComplete
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\obj\Debug\AlkemyDAL.dll
+C:\Users\el_ag\OneDrive\Documentos\Visual Studio 2015\Projects\AlkemyLabsStudents\AlkemyDAL\obj\Debug\AlkemyDAL.pdb

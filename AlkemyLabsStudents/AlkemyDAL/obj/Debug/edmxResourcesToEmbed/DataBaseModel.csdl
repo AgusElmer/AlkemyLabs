@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="alkemylabsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="access">
+    <Key>
+      <PropertyRef Name="access_id" />
+    </Key>
+    <Property Name="user_password" Type="Int32" Nullable="false" />
+    <Property Name="menu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="enabled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="access_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="admin_account" Relationship="Self.FK_access_admin" FromRole="access" ToRole="admin_account" />
+    <NavigationProperty Name="students" Relationship="Self.FK_access_students" FromRole="access" ToRole="students" />
+  </EntityType>
+  <EntityType Name="admin_account">
+    <Key>
+      <PropertyRef Name="user_account" />
+    </Key>
+    <Property Name="user_account" Type="Int32" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="access" Relationship="Self.FK_access_admin" FromRole="admin_account" ToRole="access" />
+  </EntityType>
+  <EntityType Name="classes">
+    <Key>
+      <PropertyRef Name="class_code" />
+    </Key>
+    <Property Name="class_code" Type="Int32" Nullable="false" />
+    <Property Name="class_professor_dni" Type="Int32" Nullable="false" />
+    <Property Name="class_quota" Type="Int32" />
+    <Property Name="class_schedule" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="class_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="professors_table" Relationship="Self.classes_professors" FromRole="classes" ToRole="professors_table" />
+    <NavigationProperty Name="classes_registry" Relationship="Self.FK_classes_student" FromRole="classes" ToRole="classes_registry" />
+  </EntityType>
+  <EntityType Name="classes_registry">
+    <Key>
+      <PropertyRef Name="registry_ID" />
+    </Key>
+    <Property Name="file_number" Type="Int32" />
+    <Property Name="class_code" Type="Int32" />
+    <Property Name="registry_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="classes" Relationship="Self.FK_classes_student" FromRole="classes_registry" ToRole="classes" />
+    <NavigationProperty Name="students" Relationship="Self.FK_student_classes" FromRole="classes_registry" ToRole="students" />
+  </EntityType>
+  <EntityType Name="professors_table">
+    <Key>
+      <PropertyRef Name="professor_ID" />
+    </Key>
+    <Property Name="professor_ID" Type="Int32" Nullable="false" />
+    <Property Name="professor_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="professor_last_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="classes" Relationship="Self.classes_professors" FromRole="professors_table" ToRole="classes" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="file_number" />
+    </Key>
+    <Property Name="file_number" Type="Int32" Nullable="false" />
+    <Property Name="student_ID" Type="Int32" />
+    <Property Name="student_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="student_last_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="access" Relationship="Self.FK_access_students" FromRole="students" ToRole="access" />
+    <NavigationProperty Name="classes_registry" Relationship="Self.FK_student_classes" FromRole="students" ToRole="classes_registry" />
+  </EntityType>
+  <Association Name="FK_access_admin">
+    <End Role="admin_account" Type="Self.admin_account" Multiplicity="1" />
+    <End Role="access" Type="Self.access" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="admin_account">
+        <PropertyRef Name="user_account" />
+      </Principal>
+      <Dependent Role="access">
+        <PropertyRef Name="access_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_access_students">
+    <End Role="students" Type="Self.students" Multiplicity="1" />
+    <End Role="access" Type="Self.access" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="file_number" />
+      </Principal>
+      <Dependent Role="access">
+        <PropertyRef Name="access_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="classes_professors">
+    <End Role="professors_table" Type="Self.professors_table" Multiplicity="1" />
+    <End Role="classes" Type="Self.classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="professors_table">
+        <PropertyRef Name="professor_ID" />
+      </Principal>
+      <Dependent Role="classes">
+        <PropertyRef Name="class_professor_dni" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_classes_student">
+    <End Role="classes" Type="Self.classes" Multiplicity="0..1" />
+    <End Role="classes_registry" Type="Self.classes_registry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="classes">
+        <PropertyRef Name="class_code" />
+      </Principal>
+      <Dependent Role="classes_registry">
+        <PropertyRef Name="class_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_student_classes">
+    <End Role="students" Type="Self.students" Multiplicity="0..1" />
+    <End Role="classes_registry" Type="Self.classes_registry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="file_number" />
+      </Principal>
+      <Dependent Role="classes_registry">
+        <PropertyRef Name="file_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="alkemylabsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="access" EntityType="Self.access" />
+    <EntitySet Name="admin_account" EntityType="Self.admin_account" />
+    <EntitySet Name="classes" EntityType="Self.classes" />
+    <EntitySet Name="classes_registry" EntityType="Self.classes_registry" />
+    <EntitySet Name="professors_table" EntityType="Self.professors_table" />
+    <EntitySet Name="students" EntityType="Self.students" />
+    <AssociationSet Name="FK_access_admin" Association="Self.FK_access_admin">
+      <End Role="admin_account" EntitySet="admin_account" />
+      <End Role="access" EntitySet="access" />
+    </AssociationSet>
+    <AssociationSet Name="FK_access_students" Association="Self.FK_access_students">
+      <End Role="students" EntitySet="students" />
+      <End Role="access" EntitySet="access" />
+    </AssociationSet>
+    <AssociationSet Name="classes_professors" Association="Self.classes_professors">
+      <End Role="professors_table" EntitySet="professors_table" />
+      <End Role="classes" EntitySet="classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_classes_student" Association="Self.FK_classes_student">
+      <End Role="classes" EntitySet="classes" />
+      <End Role="classes_registry" EntitySet="classes_registry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_student_classes" Association="Self.FK_student_classes">
+      <End Role="students" EntitySet="students" />
+      <End Role="classes_registry" EntitySet="classes_registry" />
+    </AssociationSet>
+    <FunctionImport Name="delete_class">
+      <Parameter Name="pclass_code" Mode="In" Type="Int32" />
+      <Parameter Name="class_name" Mode="In" Type="String" />
+      <Parameter Name="pclass_quota" Mode="In" Type="Int32" />
+      <Parameter Name="pfull_quota" Mode="In" Type="Int32" />
+      <Parameter Name="pclass_schedule" Mode="In" Type="Int32" />
+      <Parameter Name="pclass_professor_dni" Mode="In" Type="Int32" />
+      <Parameter Name="RetVal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="delete_professor">
+      <Parameter Name="pprofessor_name" Mode="In" Type="String" />
+      <Parameter Name="pprofessor_lastName" Mode="In" Type="String" />
+      <Parameter Name="pprofessor_ID" Mode="In" Type="Int32" />
+      <Parameter Name="RetVal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="delete_student">
+      <Parameter Name="pfile_number" Mode="In" Type="Int32" />
+      <Parameter Name="pstudent_ID" Mode="In" Type="Int32" />
+      <Parameter Name="pstudent_name" Mode="In" Type="String" />
+      <Parameter Name="pstudent_lastName" Mode="In" Type="String" />
+      <Parameter Name="RetVal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="insert_class">
+      <Parameter Name="pclass_code" Mode="In" Type="Int32" />
+      <Parameter Name="pclass_professor_dni" Mode="In" Type="Int32" />
+      <Parameter Name="pclass_quota" Mode="In" Type="Int32" />
+      <Parameter Name="pclass_schedule" Mode="In" Type="DateTime" />
+      <Parameter Name="pclass_name" Mode="In" Type="String" />
+      <Parameter Name="Retval" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="insert_professor">
+      <Parameter Name="pprofessor_ID" Mode="In" Type="Int32" />
+      <Parameter Name="pprofessor_name" Mode="In" Type="String" />
+      <Parameter Name="pprofesor_last_name" Mode="In" Type="String" />
+      <Parameter Name="Retval" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="insert_student">
+      <Parameter Name="pfile_number" Mode="In" Type="Int32" />
+      <Parameter Name="pstudent_ID" Mode="In" Type="Int32" />
+      <Parameter Name="pstudent_name" Mode="In" Type="String" />
+      <Parameter Name="pstudent_last_name" Mode="In" Type="String" />
+      <Parameter Name="Retval" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

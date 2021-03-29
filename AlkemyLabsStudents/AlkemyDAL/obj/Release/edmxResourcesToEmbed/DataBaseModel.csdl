@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="alkemylabsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="classes">
+    <Key>
+      <PropertyRef Name="class_code" />
+    </Key>
+    <Property Name="class_code" Type="Int32" Nullable="false" />
+    <Property Name="class_professor_dni" Type="Int32" Nullable="false" />
+    <Property Name="class_quota" Type="Int32" />
+    <Property Name="class_schedule" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="class_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="professors_table" Relationship="Self.classes_professors" FromRole="classes" ToRole="professors_table" />
+    <NavigationProperty Name="students" Relationship="Self.file_number" FromRole="classes" ToRole="students" />
+  </EntityType>
+  <EntityType Name="professors_table">
+    <Key>
+      <PropertyRef Name="professor_ID" />
+    </Key>
+    <Property Name="professor_ID" Type="Int32" Nullable="false" />
+    <Property Name="professor_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="professor_last_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="classes" Relationship="Self.classes_professors" FromRole="professors_table" ToRole="classes" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="file_number" />
+    </Key>
+    <Property Name="file_number" Type="Int32" Nullable="false" />
+    <Property Name="student_ID" Type="Int32" />
+    <Property Name="student_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="student_last_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="classes" Relationship="Self.file_number" FromRole="students" ToRole="classes" />
+  </EntityType>
+  <Association Name="classes_professors">
+    <End Role="professors_table" Type="Self.professors_table" Multiplicity="1" />
+    <End Role="classes" Type="Self.classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="professors_table">
+        <PropertyRef Name="professor_ID" />
+      </Principal>
+      <Dependent Role="classes">
+        <PropertyRef Name="class_professor_dni" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="file_number">
+    <End Role="classes" Type="Self.classes" Multiplicity="0..1" />
+    <End Role="students" Type="Self.students" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="alkemylabsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="classes" EntityType="Self.classes" />
+    <EntitySet Name="professors_table" EntityType="Self.professors_table" />
+    <EntitySet Name="students" EntityType="Self.students" />
+    <AssociationSet Name="classes_professors" Association="Self.classes_professors">
+      <End Role="professors_table" EntitySet="professors_table" />
+      <End Role="classes" EntitySet="classes" />
+    </AssociationSet>
+    <AssociationSet Name="file_number" Association="Self.file_number">
+      <End Role="classes" EntitySet="classes" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+    <FunctionImport Name="delete_class">
+      <Parameter Name="pclass_code" Mode="In" Type="Int32" />
+      <Parameter Name="class_name" Mode="In" Type="String" />
+      <Parameter Name="pclass_quota" Mode="In" Type="Int32" />
+      <Parameter Name="pfull_quota" Mode="In" Type="Int32" />
+      <Parameter Name="pclass_schedule" Mode="In" Type="Int32" />
+      <Parameter Name="pclass_professor_dni" Mode="In" Type="Int32" />
+      <Parameter Name="RetVal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="delete_professor">
+      <Parameter Name="pprofessor_name" Mode="In" Type="String" />
+      <Parameter Name="pprofessor_lastName" Mode="In" Type="String" />
+      <Parameter Name="pprofessor_ID" Mode="In" Type="Int32" />
+      <Parameter Name="RetVal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="delete_student">
+      <Parameter Name="pfile_number" Mode="In" Type="Int32" />
+      <Parameter Name="pstudent_ID" Mode="In" Type="Int32" />
+      <Parameter Name="pstudent_name" Mode="In" Type="String" />
+      <Parameter Name="pstudent_lastName" Mode="In" Type="String" />
+      <Parameter Name="RetVal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="insert_student">
+      <Parameter Name="pfile_number" Mode="In" Type="Int32" />
+      <Parameter Name="pstudent_ID" Mode="In" Type="Int32" />
+      <Parameter Name="pstudent_name" Mode="In" Type="String" />
+      <Parameter Name="pstudent_last_name" Mode="In" Type="String" />
+      <Parameter Name="Retval" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
