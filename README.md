@@ -1,2 +1,0 @@
-# AlkemyLabs
-Students Website
